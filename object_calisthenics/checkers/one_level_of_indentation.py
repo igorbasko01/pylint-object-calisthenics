@@ -7,13 +7,6 @@ if TYPE_CHECKING:
     from pylint.lint import PyLinter
 
 
-def register(linter: "PyLinter"):
-    """This required method auto registers the checker during initialization.
-    :param linter: The linter to register the checker to.
-    """
-    linter.register_checker(OneLevelOfIndentation(linter))
-
-
 class OneLevelOfIndentation(BaseChecker):
     """A class for checking that functions have a single level of indentation."""
 
