@@ -7,6 +7,10 @@ if TYPE_CHECKING:
     from pylint.lint import PyLinter
 
 
+class IndentationLevel(int):
+    """Describes the indentation level"""
+
+
 class OneLevelOfIndentation(BaseChecker):
     """A class for checking that functions have a single level of indentation."""
 
@@ -24,12 +28,18 @@ class OneLevelOfIndentation(BaseChecker):
     def __init__(self, linter: Optional["PyLinter"] = None):
         super().__init__(linter)
 
-    def _iterate_statements(self, node, indentations: int, max_indentations: int):
+    def _iterate_statements(self,
+                            node: nodes.NodeNG,
+                            indentations: IndentationLevel,
+                            max_indentations: IndentationLevel):
         for statement in node:
             max_indentations = self._check_indentation(statement, indentations, max_indentations)
         return max_indentations
 
-    def _check_indentation(self, current_node, indentations: int, max_indentations: int = 0):
+    def _check_indentation(self,
+                           current_node: nodes.NodeNG,
+                           indentations: IndentationLevel,
+                           max_indentations: IndentationLevel = 0):
         if max_indentations > self.max_indentation_levels_allowed:
             return max_indentations
         if isinstance(current_node, list):

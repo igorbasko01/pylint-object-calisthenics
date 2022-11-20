@@ -6,7 +6,7 @@ from object_calisthenics.checkers.else_keyword_present import ElseKeywordPresent
 
 
 class TestElseKeywordPresent(pylint.testutils.CheckerTestCase):
-    """Test case for OneLevelOfIndentation checker."""
+    """Test case for ElseKeywordPresent checker."""
     CHECKER_CLASS = ElseKeywordPresent
 
     def test_else_present_in_function(self):

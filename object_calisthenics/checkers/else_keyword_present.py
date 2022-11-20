@@ -29,14 +29,14 @@ class ElseKeywordPresent(BaseChecker):
             return True
         return False
 
-    def _iterate_statements(self, node):
+    def _iterate_statements(self, node: nodes.NodeNG):
         result = False
         for statement in node:
             is_else_found = self._check_indentation(statement)
             result = result | is_else_found
         return result
 
-    def _check_indentation(self, current_node):
+    def _check_indentation(self, current_node: nodes.NodeNG):
         is_else_found = False
         if isinstance(current_node, nodes.If):
             is_else_found = self._contains_else(current_node)
