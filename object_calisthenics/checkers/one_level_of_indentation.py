@@ -57,6 +57,6 @@ class OneLevelOfIndentation(BaseChecker):
 
     def visit_functiondef(self, node: nodes.FunctionDef):
         """When visiting a function, check if more than one indentation present."""
-        max_indentations = self._check_indentation(node.body, indentations=0)
+        max_indentations = self._check_indentation(node.body, indentations=IndentationLevel(0))
         if max_indentations > self.max_indentation_levels_allowed:
             self.add_message("W0001", node=node)
