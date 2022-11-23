@@ -18,7 +18,7 @@ class TestFirstClassCollections(pylint.testutils.CheckerTestCase):
         class TestClass:
             def __init__(self):
                 self.test_collection: List[str] = []
-                self.test_int = 0
+                self.test_int: int = 0
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
@@ -41,7 +41,7 @@ class TestFirstClassCollections(pylint.testutils.CheckerTestCase):
         class TestClass:
             def __init__(self):
                 self.test_collection: Dict[str, str] = {}
-                self.test_int = 0
+                self.test_int: int = 0
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
@@ -64,7 +64,7 @@ class TestFirstClassCollections(pylint.testutils.CheckerTestCase):
         class TestClass:
             def __init__(self):
                 self.test_collection: Set[str] = Set()
-                self.test_int = 0
+                self.test_int: int = 0
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
@@ -94,7 +94,31 @@ class TestFirstClassCollections(pylint.testutils.CheckerTestCase):
         The check should fail when at least a single instance
         variable has no type hint. Use a separate message for that.
         """
-        pass
+        class_node = astroid.extract_node("""
+                class TestClass:
+                    def __init__(self):
+                        self.test_str = 'str'
+                        self.test_int: int = 0
+                """)
+        with self.assertAddsMessages(
+                pylint.testutils.MessageTest(
+                    msg_id="W0005",
+                    node=class_node,
+                    line=2,
+                    col_offset=0,
+                    end_line=2,
+                    end_col_offset=8
+                )
+        ):
+            self.checker.leave_classdef(class_node)
+
 
     def test_pass_check_only_single_collection_instance_variable(self):
-        pass
+        """Test that the check passes when the only instance variable is a collection"""
+        class_node = astroid.extract_node("""
+                class TestClass:
+                    def __init__(self):
+                        self.test_collection: List[str] = []
+                """)
+        with self.assertNoMessages():
+            self.checker.leave_classdef(class_node)
