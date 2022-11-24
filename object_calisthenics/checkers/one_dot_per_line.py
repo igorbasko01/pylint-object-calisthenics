@@ -8,7 +8,10 @@ if TYPE_CHECKING:
 
 
 class OneDotPerLine(BaseChecker):
-    """A class for checking that statements only use a single dot, and that there is no call chaining."""
+    """
+    A class for checking that statements only use a single dot,
+    and that there is no call chaining.
+    """
 
     name = "one-dot-per-line"
     msgs = {
@@ -22,5 +25,21 @@ class OneDotPerLine(BaseChecker):
     def __init__(self, linter: Optional["PyLinter"] = None):
         super().__init__(linter)
 
-    def visit_assign(self, node: nodes.Assign):
-        pass
+    def _multiple_dots(self, node: nodes.Attribute):
+        if hasattr(node, 'expr') and hasattr(node.expr, 'expr'):
+            return True
+        return False
+
+    def _add_message(self, node: nodes.Attribute):
+        self.add_message("W0006", node=node)
+
+    def visit_call(self, node: nodes.Call):
+        """Check dot per line when function call"""
+        func = node.func
+        if self._multiple_dots(func):
+            self._add_message(node)
+
+    def visit_attribute(self, node: nodes.Attribute):
+        """Check dot per line when referencing attribute"""
+        if self._multiple_dots(node):
+            self._add_message(node)
