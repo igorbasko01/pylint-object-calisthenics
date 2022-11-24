@@ -6,6 +6,7 @@ from object_calisthenics.checkers.primitive_obsession import PrimitiveObsession
 
 
 class TestPrimitiveObsession(pylint.testutils.CheckerTestCase):
+    # pylint: disable=W0006
     """Test case for PrimitiveObsession checker."""
     CHECKER_CLASS = PrimitiveObsession
 

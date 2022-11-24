@@ -9,6 +9,7 @@ if TYPE_CHECKING:
 
 
 class FirstClassCollections(BaseChecker):
+    # pylint: disable=W0006
     """
     A class for checking that a class will contain only a single
     instance variable if it is of a collection type

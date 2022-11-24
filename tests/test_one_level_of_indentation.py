@@ -5,6 +5,7 @@ from object_calisthenics.checkers.one_level_of_indentation import OneLevelOfInde
 
 
 class TestOneLevelOfIndentation(pylint.testutils.CheckerTestCase):
+    # pylint: disable=W0006
     """Test case for OneLevelOfIndentation checker."""
     CHECKER_CLASS = OneLevelOfIndentation
 

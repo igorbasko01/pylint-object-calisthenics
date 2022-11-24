@@ -6,6 +6,7 @@ from object_calisthenics.checkers.first_class_collections import FirstClassColle
 
 
 class TestFirstClassCollections(pylint.testutils.CheckerTestCase):
+    # pylint: disable=W0006
     """Test case for FirstClassCollections checker."""
     CHECKER_CLASS = FirstClassCollections
 
