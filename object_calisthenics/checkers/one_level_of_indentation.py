@@ -16,11 +16,11 @@ class OneLevelOfIndentation(BaseChecker):
 
     name = "one-level-indentation"
     msgs = {
-        "W0001": {
+        "W9001": (
             "A function has more than one level of indentation.",
             "too-much-indentation",
             "A function should contain at most a single indentation."
-        }
+        )
     }
 
     max_indentation_levels_allowed = 1
@@ -59,4 +59,4 @@ class OneLevelOfIndentation(BaseChecker):
         """When visiting a function, check if more than one indentation present."""
         max_indentations = self._check_indentation(node.body, indentations=IndentationLevel(0))
         if max_indentations > self.max_indentation_levels_allowed:
-            self.add_message("W0001", node=node)
+            self.add_message("W9001", node=node)

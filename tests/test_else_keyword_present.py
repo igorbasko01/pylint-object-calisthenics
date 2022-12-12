@@ -6,7 +6,7 @@ from object_calisthenics.checkers.else_keyword_present import ElseKeywordPresent
 
 
 class TestElseKeywordPresent(pylint.testutils.CheckerTestCase):
-    # pylint: disable=W0006
+    # pylint: disable=chain-of-method-calls
     """Test case for ElseKeywordPresent checker."""
     CHECKER_CLASS = ElseKeywordPresent
 
@@ -23,7 +23,7 @@ class TestElseKeywordPresent(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0002",
+                    msg_id="W9002",
                     node=func_node,
                     line=2,
                     col_offset=0,

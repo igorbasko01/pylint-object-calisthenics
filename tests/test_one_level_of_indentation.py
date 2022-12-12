@@ -5,7 +5,8 @@ from object_calisthenics.checkers.one_level_of_indentation import OneLevelOfInde
 
 
 class TestOneLevelOfIndentation(pylint.testutils.CheckerTestCase):
-    # pylint: disable=W0006
+    # pylint: disable=chain-of-method-calls
+    # pylint: disable=class-too-large
     """Test case for OneLevelOfIndentation checker."""
     CHECKER_CLASS = OneLevelOfIndentation
 
@@ -21,7 +22,7 @@ class TestOneLevelOfIndentation(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0001",
+                    msg_id="W9001",
                     node=func_node,
                     line=2,
                     col_offset=0,
@@ -44,7 +45,7 @@ class TestOneLevelOfIndentation(pylint.testutils.CheckerTestCase):
                 """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0001",
+                    msg_id="W9001",
                     node=func_node,
                     line=2,
                     col_offset=0,
@@ -65,7 +66,7 @@ class TestOneLevelOfIndentation(pylint.testutils.CheckerTestCase):
                         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0001",
+                    msg_id="W9001",
                     node=func_node,
                     line=2,
                     col_offset=0,
@@ -85,7 +86,7 @@ class TestOneLevelOfIndentation(pylint.testutils.CheckerTestCase):
                                 """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0001",
+                    msg_id="W9001",
                     node=func_node,
                     line=2,
                     col_offset=0,
@@ -119,7 +120,7 @@ class TestOneLevelOfIndentation(pylint.testutils.CheckerTestCase):
                 """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0001",
+                    msg_id="W9001",
                     node=func_node,
                     line=2,
                     col_offset=0,
@@ -142,7 +143,7 @@ class TestOneLevelOfIndentation(pylint.testutils.CheckerTestCase):
                         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0001",
+                    msg_id="W9001",
                     node=func_node,
                     line=2,
                     col_offset=0,
