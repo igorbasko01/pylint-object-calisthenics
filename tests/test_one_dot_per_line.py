@@ -6,7 +6,8 @@ from object_calisthenics.checkers.one_dot_per_line import OneDotPerLine
 
 
 class TestOneDotPerLine(pylint.testutils.CheckerTestCase):
-    # pylint: disable=W0006
+    # pylint: disable=chain-of-method-calls
+    # pylint: disable=class-too-large
     """Test case for OneDotPerLine checker."""
     CHECKER_CLASS = OneDotPerLine
 
@@ -20,7 +21,7 @@ class TestOneDotPerLine(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0006",
+                    msg_id="W9006",
                     node=call_node.value,
                     line=3,
                     col_offset=12,
@@ -51,7 +52,7 @@ class TestOneDotPerLine(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0006",
+                    msg_id="W9006",
                     node=call_node.value,
                     line=3,
                     col_offset=11,
@@ -82,7 +83,7 @@ class TestOneDotPerLine(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0006",
+                    msg_id="W9006",
                     node=call_node,
                     line=3,
                     col_offset=4,
@@ -114,12 +115,12 @@ class TestOneDotPerLine(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0006",
+                    msg_id="W9006",
                     node=attribute_node,
                     line=3,
                     col_offset=4,
                     end_line=3,
-                    end_col_offset=21
+                    end_col_offset=19
                 )
         ):
             self.checker.visit_attribute(attribute_node)
@@ -145,12 +146,12 @@ class TestOneDotPerLine(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0006",
+                    msg_id="W9006",
                     node=call_node.value,
                     line=3,
                     col_offset=12,
                     end_line=3,
-                    end_col_offset=29
+                    end_col_offset=27
                 )
         ):
             self.checker.visit_attribute(call_node.value)
@@ -176,12 +177,12 @@ class TestOneDotPerLine(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0006",
+                    msg_id="W9006",
                     node=call_node.value,
                     line=3,
                     col_offset=11,
                     end_line=3,
-                    end_col_offset=28
+                    end_col_offset=26
                 )
         ):
             self.checker.visit_attribute(call_node.value)

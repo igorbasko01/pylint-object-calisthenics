@@ -13,11 +13,11 @@ class ElseKeywordPresent(BaseChecker):
 
     name = "else-keyword-present"
     msgs = {
-        "W0002": {
+        "W9002": (
             "A function contains an else keyword",
             "dont-use-else",
             "A function shouldn't use an else keyword"
-        }
+        )
     }
 
     def __init__(self, linter: Optional["PyLinter"] = None):
@@ -50,4 +50,4 @@ class ElseKeywordPresent(BaseChecker):
         """Check if an else keyword is present in the function"""
         is_else_found = self._check_indentation(node.body)
         if is_else_found:
-            self.add_message("W0002", node=node)
+            self.add_message("W9002", node=node)

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 
 
 class FirstClassCollections(BaseChecker):
-    # pylint: disable=W0006
+    # pylint: disable=chain-of-method-calls
     """
     A class for checking that a class will contain only a single
     instance variable if it is of a collection type
@@ -17,17 +17,17 @@ class FirstClassCollections(BaseChecker):
 
     name = "first-class-collections"
     msgs = {
-        "W0004": {
+        "W9004": (
             "A class contains more than a single instance variable when a collection is present",
             "single-collection-instance-variable",
             "A class shouldn't have more than a single instance variable when there is a "
             "collection instance variable."
-        },
-        "W0005": {
+        ),
+        "W9005": (
             "A class contains un typed instance variables",
             "untyped-instance-variables",
             "A class should have type hinted all its instance variables"
-        }
+        )
     }
 
     collection_types = {'List', 'Dict', 'Set'}
@@ -60,6 +60,6 @@ class FirstClassCollections(BaseChecker):
                                for instance_variable
                                in node.instance_attrs.values())
         if untyped_variable:
-            self.add_message("W0005", node=node)
+            self.add_message("W9005", node=node)
         if found_collection and len(node.instance_attrs) > 1:
-            self.add_message("W0004", node=node)
+            self.add_message("W9004", node=node)

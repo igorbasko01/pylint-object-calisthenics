@@ -12,11 +12,11 @@ class PrimitiveObsession(BaseChecker):
 
     name = "primitive-obsession"
     msgs = {
-        "W0003": {
+        "W9003": (
             "A function argument can't be of a primitive type.",
             "dont-use-primitives",
             "A function argument should be of a custom type."
-        }
+        )
     }
 
     primitives = ['str', 'int', 'float', 'bool', 'bytes', 'bytearray']
@@ -64,4 +64,4 @@ class PrimitiveObsession(BaseChecker):
         annotations = self._clean_annotations(node.args)
         has_primitives = any(self._contains_primitive(annotation) for annotation in annotations)
         if has_primitives:
-            self.add_message("W0003", node=node)
+            self.add_message("W9003", node=node)

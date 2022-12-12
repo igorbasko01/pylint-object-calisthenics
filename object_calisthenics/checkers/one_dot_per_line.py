@@ -15,11 +15,11 @@ class OneDotPerLine(BaseChecker):
 
     name = "one-dot-per-line"
     msgs = {
-        "W0006": {
+        "W9006": (
             "A statement has a chain of method calls.",
             "chain-of-method-calls",
             "A statement should at most have a single method call."
-        }
+        )
     }
 
     def __init__(self, linter: Optional["PyLinter"] = None):
@@ -31,7 +31,7 @@ class OneDotPerLine(BaseChecker):
         return False
 
     def _add_message(self, node: nodes.Attribute):
-        self.add_message("W0006", node=node)
+        self.add_message("W9006", node=node)
 
     def visit_call(self, node: nodes.Call):
         """Check dot per line when function call"""

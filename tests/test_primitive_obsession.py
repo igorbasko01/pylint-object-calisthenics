@@ -6,7 +6,8 @@ from object_calisthenics.checkers.primitive_obsession import PrimitiveObsession
 
 
 class TestPrimitiveObsession(pylint.testutils.CheckerTestCase):
-    # pylint: disable=W0006
+    # pylint: disable=chain-of-method-calls
+    # pylint: disable=class-too-large
     """Test case for PrimitiveObsession checker."""
     CHECKER_CLASS = PrimitiveObsession
 
@@ -18,7 +19,7 @@ class TestPrimitiveObsession(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0003",
+                    msg_id="W9003",
                     node=func_node,
                     line=2,
                     col_offset=0,
@@ -36,7 +37,7 @@ class TestPrimitiveObsession(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0003",
+                    msg_id="W9003",
                     node=func_node,
                     line=2,
                     col_offset=0,
@@ -54,7 +55,7 @@ class TestPrimitiveObsession(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0003",
+                    msg_id="W9003",
                     node=func_node,
                     line=2,
                     col_offset=0,
@@ -75,7 +76,7 @@ class TestPrimitiveObsession(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0003",
+                    msg_id="W9003",
                     node=func_node,
                     line=2,
                     col_offset=0,
@@ -105,7 +106,7 @@ class TestPrimitiveObsession(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0003",
+                    msg_id="W9003",
                     node=func_node,
                     line=2,
                     col_offset=0,
@@ -123,7 +124,7 @@ class TestPrimitiveObsession(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0003",
+                    msg_id="W9003",
                     node=func_node,
                     line=2,
                     col_offset=0,
@@ -144,7 +145,7 @@ class TestPrimitiveObsession(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0003",
+                    msg_id="W9003",
                     node=func_node,
                     line=2,
                     col_offset=0,
@@ -177,7 +178,7 @@ class TestPrimitiveObsession(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0003",
+                    msg_id="W9003",
                     node=func_node,
                     line=2,
                     col_offset=0,
@@ -198,7 +199,7 @@ class TestPrimitiveObsession(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0003",
+                    msg_id="W9003",
                     node=func_node,
                     line=2,
                     col_offset=0,
@@ -253,7 +254,7 @@ class TestPrimitiveObsession(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0003",
+                    msg_id="W9003",
                     node=func_node,
                     line=2,
                     col_offset=0,

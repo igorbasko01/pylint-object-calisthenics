@@ -6,7 +6,8 @@ from object_calisthenics.checkers.first_class_collections import FirstClassColle
 
 
 class TestFirstClassCollections(pylint.testutils.CheckerTestCase):
-    # pylint: disable=W0006
+    # pylint: disable=chain-of-method-calls
+    # pylint: disable=class-too-large
     """Test case for FirstClassCollections checker."""
     CHECKER_CLASS = FirstClassCollections
 
@@ -23,12 +24,12 @@ class TestFirstClassCollections(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0004",
+                    msg_id="W9004",
                     node=class_node,
                     line=2,
                     col_offset=0,
                     end_line=2,
-                    end_col_offset=8
+                    end_col_offset=15
                 )
         ):
             self.checker.leave_classdef(class_node)
@@ -46,12 +47,12 @@ class TestFirstClassCollections(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0004",
+                    msg_id="W9004",
                     node=class_node,
                     line=2,
                     col_offset=0,
                     end_line=2,
-                    end_col_offset=8
+                    end_col_offset=15
                 )
         ):
             self.checker.leave_classdef(class_node)
@@ -69,12 +70,12 @@ class TestFirstClassCollections(pylint.testutils.CheckerTestCase):
         """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0004",
+                    msg_id="W9004",
                     node=class_node,
                     line=2,
                     col_offset=0,
                     end_line=2,
-                    end_col_offset=8
+                    end_col_offset=15
                 )
         ):
             self.checker.leave_classdef(class_node)
@@ -103,12 +104,12 @@ class TestFirstClassCollections(pylint.testutils.CheckerTestCase):
                 """)
         with self.assertAddsMessages(
                 pylint.testutils.MessageTest(
-                    msg_id="W0005",
+                    msg_id="W9005",
                     node=class_node,
                     line=2,
                     col_offset=0,
                     end_line=2,
-                    end_col_offset=8
+                    end_col_offset=15
                 )
         ):
             self.checker.leave_classdef(class_node)
