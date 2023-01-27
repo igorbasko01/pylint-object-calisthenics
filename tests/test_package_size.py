@@ -2,6 +2,7 @@
 import astroid
 import pylint.testutils
 
+from astroid.builder import AstroidBuilder
 from object_calisthenics.checkers.package_size import PackageSize
 
 
@@ -10,5 +11,5 @@ class TestPackageSize(pylint.testutils.CheckerTestCase):
     CHECKER_CLASS = PackageSize
 
     def test_package_has_too_much_files(self):
-        node = astroid.extract_node('import astroid')
+        module = AstroidBuilder().file_build('../object_calisthenics/checkers/__init__.py')
         self.assertNoMessages()
